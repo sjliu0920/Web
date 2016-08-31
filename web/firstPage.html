@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加商品</title>
+</head>
+<body>
+<form method="post" action="controller" name="frm">
+    <input type="hidden" name="action" value="insertItem">
+    <table>
+        <tr>
+            <td>产品大类</td>
+            <td>
+                <select size="1" name="level_1_id" onchange="redirec(document.frm.level_1_id.options.selectedIndex)">
+                    <option value="" selected>请选择</option>
+                    <option value="1">衣服</option>
+                    <option value="2">化妆品</option>
+                    <option value="3">营养品</option>
+                </select>
+            </td>
+
+            <td>产品子类</td>
+            <td>
+                <select size="1" name="level_2_id">
+                    <option value="请选择" selected>请选择</option>
+                </select>
+            </td>
+
+            <td>产品评价</td>
+            <td>
+                <select size="1" name="item_star">
+                    <option value="" selected>请选择 </option>
+                    <option value="1">*</option>
+                    <option value="2">**</option>
+                    <option value="3">***</option>
+                    <option value="4">****</option>
+                    <option value="5">*****</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>商品名称</td>
+            <td><input type="text" name="item_name"></td>
+
+            <td>商品价格</td>
+            <td><input type="text" name="item_price"></td>
+        </tr>
+
+        <tr>
+            <td><input type="reset" value="重填"></td>
+            <td><input type="submit" value="提交"></td>
+        </tr>
+    </table>
+</form>
+
+<script language = "javascript">
+    //获取一级菜单长度
+    var select1_len = document.frm.level_1_id.options.length;
+    var select2 = new Array(select1_len);
+    //把一级菜单都设为数组
+    for (var i = 0; i < select1_len; i++)
+    {
+        select2[i] = new Array();
+    }
+    //定义基本选项
+    select2[0][0] = new Option("请选择", "0");
+
+    select2[1][0] = new Option("男装", "0");
+    select2[1][1] = new Option("女装", "1");
+    select2[1][2] = new Option("儿装", "2");
+
+    select2[2][0] = new Option("香水", "0");
+    select2[2][1] = new Option("口红", "1");
+
+    select2[3][0] = new Option("脑白金", "0");
+    select2[3][1] = new Option("加多宝", "1");
+    //联动函数
+    function redirec(x)
+    {
+        var temp = document.frm.level_2_id;
+        for (i=0;i<select2[x].length;i++)
+        {
+            temp.options[i]=new Option(select2[x][i].text,select2[x][i].value);
+        }
+        temp.options[0].selected=true;
+    }
+
+</script>
+</body>
+</html>

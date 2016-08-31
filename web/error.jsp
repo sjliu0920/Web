@@ -1,0 +1,19 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: double
+  Date: 8/29/16
+  Time: 9:02 AM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isErrorPage="true"%>
+<html>
+<head>
+    <title>错误页面</title>
+</head>
+<body>
+    <h1>应用程序发生错误</h1>
+    错误原因：<%=exception.toString()%>>
+
+</body>
+</html>
